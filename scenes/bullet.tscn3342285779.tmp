@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://drs1dqajydby2"]
+
+[ext_resource type="Script" uid="uid://h1val502tbdg" path="res://scripts/bullet.gd" id="1_y25gk"]
+[ext_resource type="Texture2D" uid="uid://nq3dmnb6gche" path="res://assets/10-Cannon/Cannon Ball.png" id="2_y25gk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mkf8s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_y25gk")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y25gk"]
+radius = 5.0990195
+
+[node name="Bullet" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_y25gk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mkf8s")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, 5)
+shape = SubResource("CircleShape2D_y25gk")
+
+[node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="Sfx" to="." method="_on_sfx_finished"]

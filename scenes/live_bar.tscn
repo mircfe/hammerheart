@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://6n7ycdnr01j8"]
+
+[ext_resource type="Script" uid="uid://w4a5nljjibx3" path="res://scripts/live_bar.gd" id="1_0soyf"]
+[ext_resource type="Texture2D" uid="uid://kodkfk3low26" path="res://assets/12-Live and Coins/Live Bar.png" id="1_vr77a"]
+[ext_resource type="Texture2D" uid="uid://b7q261iq3envk" path="res://assets/12-Live and Coins/Heart.png" id="2_0soyf"]
+
+[node name="LiveBar" type="CanvasLayer"]
+script = ExtResource("1_0soyf")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_right = -14.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Background" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_vr77a")
+
+[node name="HeartsLayer" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 66.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Heart1" type="TextureRect" parent="Control/HeartsLayer"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 27.0
+offset_bottom = 25.0
+texture = ExtResource("2_0soyf")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="Heart2" type="TextureRect" parent="Control/HeartsLayer"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 14.0
+offset_right = 39.0
+offset_bottom = 25.0
+texture = ExtResource("2_0soyf")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="Heart3" type="TextureRect" parent="Control/HeartsLayer"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 14.0
+offset_right = 51.0
+offset_bottom = 25.0
+texture = ExtResource("2_0soyf")
+expand_mode = 5
+stretch_mode = 4

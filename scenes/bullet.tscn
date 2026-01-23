@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://drs1dqajydby2"]
+
+[ext_resource type="Script" uid="uid://h1val502tbdg" path="res://scripts/bullet.gd" id="1_y25gk"]
+[ext_resource type="Texture2D" uid="uid://se2pdq2uteot" path="res://assets/10-Cannon/bullet_explosion.png" id="2_eoqba"]
+[ext_resource type="Texture2D" uid="uid://nq3dmnb6gche" path="res://assets/10-Cannon/Cannon Ball.png" id="2_y25gk"]
+[ext_resource type="AudioStream" uid="uid://ds03md6xk2h8e" path="res://assets/audio/bombDestroy.ogg" id="3_l5glv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qncy5"]
+atlas = ExtResource("2_eoqba")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tamys"]
+atlas = ExtResource("2_eoqba")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26lx3"]
+atlas = ExtResource("2_eoqba")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cfmv"]
+atlas = ExtResource("2_eoqba")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k76ql"]
+atlas = ExtResource("2_eoqba")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in4mv"]
+atlas = ExtResource("2_eoqba")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mkf8s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qncy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tamys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26lx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cfmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k76ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in4mv")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_y25gk")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y25gk"]
+radius = 5.0990195
+
+[node name="Bullet" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_y25gk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mkf8s")
+animation = &"explosion"
+frame = 5
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, 5)
+shape = SubResource("CircleShape2D_y25gk")
+
+[node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_l5glv")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="Sfx" to="." method="_on_sfx_finished"]
