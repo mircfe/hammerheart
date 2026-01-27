@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Hammerheart"
-run/main_scene="uid://beqbk5c1tpp1i"
+run/main_scene="uid://y6wnxrbal5u4"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -25,6 +25,11 @@ window/size/viewport_width=640
 window/size/viewport_height=480
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [input]
 
