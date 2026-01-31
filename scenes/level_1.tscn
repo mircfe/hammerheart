@@ -610,11 +610,14 @@ _data = {
 
 [node name="Level1" type="Node2D"]
 
-[node name="LiveBar" parent="." instance=ExtResource("1_15mv3")]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="GemsCounter" parent="." instance=ExtResource("10_2y5yt")]
+[node name="LiveBar" parent="UI" instance=ExtResource("1_15mv3")]
 
-[node name="GameOverPanel" parent="." instance=ExtResource("3_7gny6")]
+[node name="GemsCounter" parent="UI" instance=ExtResource("10_2y5yt")]
+
+[node name="GameOverPanel" parent="UI" instance=ExtResource("3_7gny6")]
+process_mode = 2
 visible = false
 
 [node name="Midground" type="Node2D" parent="."]

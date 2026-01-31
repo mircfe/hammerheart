@@ -18,13 +18,14 @@ var is_died := false
 func _ready() -> void:
 	animated_sprite_2d.animation_finished.connect(_on_anim_finished)
 	animated_sprite_2d.animation_looped.connect(_on_anim_looped) # safety
+	player_died.connect(GameManager.start_game_over_sequence)  # ← collegamento con il game manager
 	hitbox.position = hitbox_offset_right
 	
 func die() -> void:
 	is_died = true
 	sfx_game_over.play()
 	hitbox.monitorable = false
-	collision_shape_player.disabled = true  # ← No collisioni fisiche
+	set_physics_process(false)  # ← Ferma fisica MA collisioni attive!
 	animated_sprite_2d.play("dead")        # ← Sblocca animazione!
 	player_died.emit()                     # ← Notifica GameManager
 	

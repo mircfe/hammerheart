@@ -1,11 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://8pckteq1yysg"]
+[gd_scene load_steps=6 format=3 uid="uid://8pckteq1yysg"]
 
 [ext_resource type="Script" uid="uid://c1vytnk6hpbry" path="res://scripts/game_over_panel.gd" id="1_aa1li"]
 [ext_resource type="FontFile" uid="uid://ba5oacg6bwefp" path="res://assets/fonts/title/PressStart2P-Regular.ttf" id="1_khxlv"]
 [ext_resource type="Texture2D" uid="uid://cv2trm4bmcfho" path="res://assets/01-King Human/Dead (78x58).png" id="2_aa1li"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydnye"]
-bg_color = Color(0.2, 0.2, 0.2, 0.19607843)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0mp8"]
 bg_color = Color(0.6, 0.6, 0.6, 0.27450982)
@@ -14,7 +11,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0.27450982)
 texture = ExtResource("2_aa1li")
 region_rect = Rect2(226, 15.5, 57, 42.5)
 
-[node name="GameOverPanel" type="Control"]
+[node name="GameOverPanel" type="Control" groups=["GameOverPanel"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_aa1li")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -36,7 +33,7 @@ offset_right = 200.75
 offset_bottom = 117.25
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ydnye")
+color = Color(0, 0, 0, 0.78431374)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

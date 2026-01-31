@@ -48,7 +48,9 @@ func start_game_over_sequence() -> void:
 	# 3) Pausa gioco e mostra GameOverPanel
 	get_tree().paused = true
 	
-	# Trova UI dal primo nodo Level (cambia path se necessario)
-	var level_scene = get_tree().current_scene
-	var game_over_panel = level_scene.get_node("GameOverPanel")
-	game_over_panel.visible = true
+	var game_over_panel = get_tree().get_first_node_in_group("GameOverPanel")
+	if game_over_panel:
+		game_over_panel.visible = true
+		game_over_panel.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	else:
+		print("❌ ERRORE: GameOverPanel non trovato!")
