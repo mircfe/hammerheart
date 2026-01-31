@@ -31,6 +31,9 @@ func get_hearts() -> int:
 func reset_gems() -> void:
 	current_gems = 0
 
+func reset_hearts() -> void:
+	total_hearts = 3
+	
 func have_key() ->bool:
 	return key
 
