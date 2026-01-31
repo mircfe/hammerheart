@@ -18,3 +18,6 @@ https://karsiori.itch.io/pixel-art-key-pack-animated
 Sounds assets
 Bombs
 3 Explosion Bangs Copyright 2012 Iwan 'qubodup' Gabovitch <http://qubodup.net>
+
+Game Over
+Credits "0new4y" - https://opengameart.org/users/0new4y

@@ -2,7 +2,10 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sfx_hammer: AudioStreamPlayer2D = $SfxHammer
 @onready var hitbox: Area2D = $Hitbox
+@onready var sfx_game_over: AudioStreamPlayer2D = $SfxGameOver
+@onready var collision_shape_player: CollisionShape2D = $CollisionShapePlayer
 
+signal player_died
 
 const SPEED := 130.0
 const JUMP_VELOCITY := -400.0
@@ -10,15 +13,20 @@ var is_attacking := false
 var hitbox_offset_left:= Vector2(-35,4)
 var hitbox_offset_right:= Vector2(25,4)
 
+var is_died := false
+
 func _ready() -> void:
 	animated_sprite_2d.animation_finished.connect(_on_anim_finished)
 	animated_sprite_2d.animation_looped.connect(_on_anim_looped) # safety
 	hitbox.position = hitbox_offset_right
 	
 func die() -> void:
-	GameManager.reset_gems()
-	queue_free()
-	get_tree().call_deferred("reload_current_scene")
+	is_died = true
+	sfx_game_over.play()
+	hitbox.monitorable = false
+	collision_shape_player.disabled = true  # ← No collisioni fisiche
+	animated_sprite_2d.play("dead")        # ← Sblocca animazione!
+	player_died.emit()                     # ← Notifica GameManager
 	
 func _physics_process(delta: float) -> void:
 	# Disabilita la hitbox dell'attacco sino a quando il player non fa un attacco premendo SPACE
@@ -53,13 +61,14 @@ func _physics_process(delta: float) -> void:
 	# Animazioni (non sovrascrivere l'attacco)
 	if is_attacking:
 		return
-
-	if not is_on_floor():
-		_set_anim("jump")
-	elif abs(direction) < 0.01:
-		_set_anim("idle")
-	else:
-		_set_anim("run")
+	
+	if !is_died:
+		if not is_on_floor():
+			_set_anim("jump")
+		elif abs(direction) < 0.01:
+			_set_anim("idle")
+		else:
+			_set_anim("run")
 
 func attack() -> void:
 	is_attacking = true
@@ -97,3 +106,6 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if is_attacking and area.is_in_group("Bullets"):
 		print("Hit bullet...")
 		area.bullet_hit()
+
+func _on_sfx_game_over_finished() -> void:
+	get_tree().paused = true

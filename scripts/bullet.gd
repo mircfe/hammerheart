@@ -52,7 +52,7 @@ func _on_sfx_finished() -> void:
 	if hit_player:
 		hit_player = false
 		GameManager.remove_hearts()
-		if GameManager.get_hearts()==0:
+		if GameManager.get_hearts()<=0:
 			ref_player.die()
 		queue_free()
 	else:

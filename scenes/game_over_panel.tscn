@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=3 uid="uid://8pckteq1yysg"]
+
+[ext_resource type="Script" uid="uid://c1vytnk6hpbry" path="res://scripts/game_over_panel.gd" id="1_aa1li"]
+[ext_resource type="FontFile" uid="uid://ba5oacg6bwefp" path="res://assets/fonts/title/PressStart2P-Regular.ttf" id="1_khxlv"]
+[ext_resource type="Texture2D" uid="uid://cv2trm4bmcfho" path="res://assets/01-King Human/Dead (78x58).png" id="2_aa1li"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydnye"]
+bg_color = Color(0.2, 0.2, 0.2, 0.19607843)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0mp8"]
+bg_color = Color(0.6, 0.6, 0.6, 0.27450982)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gaypx"]
+texture = ExtResource("2_aa1li")
+region_rect = Rect2(226, 15.5, 57, 42.5)
+
+[node name="GameOverPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aa1li")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.75
+offset_top = -117.25
+offset_right = 200.75
+offset_bottom = 117.25
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ydnye")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -88.0
+offset_right = 112.5
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_khxlv")
+theme_override_font_sizes/font_size = 25
+text = "Game Over"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = 10.0
+offset_right = 98.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="ButtonContinue" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_khxlv")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_d0mp8")
+text = "Continue"
+
+[node name="ButtonMenu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_khxlv")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_d0mp8")
+text = "Menù"
+
+[node name="PanelPlayer" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 195.0
+offset_right = 341.0
+offset_bottom = 235.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_gaypx")
+
+[connection signal="pressed" from="VBoxContainer/ButtonContinue" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonMenu" to="." method="_on_button_menu_pressed"]
