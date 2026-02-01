@@ -32,7 +32,8 @@ func explosion_sound() -> void:
 
 func bullet_hit() -> void:
 	is_hit = true
-	collision_shape_2d.disabled = true
+	collision_shape_2d.set_deferred("disabled",true)
+	monitorable = false
 	sfx.play()
 	#hide()
 	animated_sprite_2d.play("explosion")
