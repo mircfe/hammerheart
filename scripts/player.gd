@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var collision_shape_player: CollisionShape2D = $CollisionShapePlayer
 
 signal player_died
+signal next_level
 
 const SPEED := 130.0
 const JUMP_VELOCITY := -400.0
@@ -14,11 +15,13 @@ var hitbox_offset_left:= Vector2(-35,4)
 var hitbox_offset_right:= Vector2(25,4)
 
 var is_died := false
+var exit_door := false
 
 func _ready() -> void:
 	animated_sprite_2d.animation_finished.connect(_on_anim_finished)
 	animated_sprite_2d.animation_looped.connect(_on_anim_looped) # safety
 	player_died.connect(GameManager.start_game_over_sequence)  # ← collegamento con il game manager
+	next_level.connect(GameManager.nexl_level_sequence)
 	hitbox.position = hitbox_offset_right
 	
 func die() -> void:
@@ -63,7 +66,7 @@ func _physics_process(delta: float) -> void:
 	if is_attacking:
 		return
 	
-	if !is_died:
+	if !is_died and !exit_door:
 		if not is_on_floor():
 			_set_anim("jump")
 		elif abs(direction) < 0.01:
@@ -84,6 +87,8 @@ func _set_anim(name: String) -> void:
 func _on_anim_finished() -> void:
 	if animated_sprite_2d.animation == "attack":
 		is_attacking = false
+	elif animated_sprite_2d.animation == "door_in":
+		next_level.emit()
 
 func _on_anim_looped() -> void:
 	# Se per errore attack è in loop, evita il soft-lock.

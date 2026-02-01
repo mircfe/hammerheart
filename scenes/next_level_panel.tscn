@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=3 uid="uid://i2hhvgjgvjcg"]
+
+[ext_resource type="Script" uid="uid://cn0r4ajmcp0ta" path="res://scripts/next_level_panel.gd" id="1_jcxiv"]
+[ext_resource type="FontFile" uid="uid://ba5oacg6bwefp" path="res://assets/fonts/title/PressStart2P-Regular.ttf" id="2_r6f00"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0mp8"]
+bg_color = Color(0.6, 0.6, 0.6, 0.27450982)
+
+[node name="NextLevelPanel" type="Control" groups=["NextLevelPanel"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jcxiv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.75
+offset_top = -117.25
+offset_right = 200.75
+offset_bottom = 117.25
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.78431374)
+
+[node name="LabelTitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -88.0
+offset_right = 112.5
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_r6f00")
+theme_override_font_sizes/font_size = 25
+text = "Well done!"
+
+[node name="LabelText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.5
+offset_top = -44.0
+offset_right = 159.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0.42745098, 1)
+theme_override_constants/line_spacing = 6
+theme_override_fonts/font = ExtResource("2_r6f00")
+theme_override_font_sizes/font_size = 11
+text = "You've completed this level. 
+Continue to delve deeper 
+into the castle 
+in search of your beloved!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonContinue" type="Button" parent="."]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 291.0
+offset_right = 418.0
+offset_bottom = 307.0
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_r6f00")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_d0mp8")
+text = "Continue"
+
+[connection signal="pressed" from="ButtonContinue" to="." method="_on_button_continue_pressed"]

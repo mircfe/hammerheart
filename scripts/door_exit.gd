@@ -2,6 +2,7 @@ extends Area2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sfx_open_door: AudioStreamPlayer2D = $SfxOpenDoor
 
+signal open_door
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,4 +21,4 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_sfx_open_door_finished() -> void:
-	pass # Replace with function body.
+	open_door.emit()
