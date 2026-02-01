@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and GameManager.have_key():
+		#Blocca il controllo del movimento del Player che verrà guidato dall'animazione della porta
+		body.can_move = false
 		animated_sprite_2d.play("opening")
 		sfx_open_door.play()
 

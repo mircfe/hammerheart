@@ -61,7 +61,7 @@ func start_game_over_sequence() -> void:
 	else:
 		print("❌ ERRORE: GameOverPanel non trovato!")
 
-func nexl_level_sequence() -> void:
+func next_level_sequence() -> void:
 	#Quando avviamo la sequenza di game over perchè il player è morto disabilitiamo il PROCESS MODE dei cannoni come prima cosa
 	for c in get_tree().get_nodes_in_group("Cannons"):
 		c.process_mode = Node.PROCESS_MODE_DISABLED

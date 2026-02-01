@@ -16,12 +16,15 @@ var hitbox_offset_right:= Vector2(25,4)
 
 var is_died := false
 var exit_door := false
+# Questa variabile controlla se possiamo o meno controllare il movimento del player. In alcuni
+# casi, come le animazioni di fine livello questa possibilità viene inibita.
+var can_move:= true
 
 func _ready() -> void:
 	animated_sprite_2d.animation_finished.connect(_on_anim_finished)
 	animated_sprite_2d.animation_looped.connect(_on_anim_looped) # safety
 	player_died.connect(GameManager.start_game_over_sequence)  # ← collegamento con il game manager
-	next_level.connect(GameManager.nexl_level_sequence)
+	next_level.connect(GameManager.next_level_sequence)
 	hitbox.position = hitbox_offset_right
 	
 func die() -> void:
@@ -33,6 +36,8 @@ func die() -> void:
 	player_died.emit()                     # ← Notifica GameManager
 	
 func _physics_process(delta: float) -> void:
+	if not can_move:
+		return
 	# Disabilita la hitbox dell'attacco sino a quando il player non fa un attacco premendo SPACE
 	hitbox.monitoring = false
 	
