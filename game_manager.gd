@@ -10,6 +10,12 @@ var total_hearts = 3
 var is_chest_open = false
 var key = false
 
+func reset_all() -> void:
+	total_hearts = 3
+	current_gems = 0
+	is_chest_open = false
+	key = false
+	
 func add_gem() -> void:
 	current_gems+=1
 	gems_changed.emit(current_gems)

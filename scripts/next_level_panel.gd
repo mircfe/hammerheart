@@ -14,6 +14,5 @@ func _process(delta: float) -> void:
 
 func _on_button_continue_pressed() -> void:
 	get_tree().paused = false
-	GameManager.reset_gems()
-	GameManager.reset_hearts()
+	GameManager.reset_all()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
