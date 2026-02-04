@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bfxycdiwnfluv" path="res://assets/fonts/hud/Kenney Rocket.ttf" id="1_l6cm7"]
 [ext_resource type="Script" uid="uid://bqvog1yv7yvyc" path="res://scripts/main_menu.gd" id="1_wu84c"]
 [ext_resource type="FontFile" uid="uid://ba5oacg6bwefp" path="res://assets/fonts/title/PressStart2P-Regular.ttf" id="3_wu84c"]
-[ext_resource type="AudioStream" uid="uid://bdxash3tul3y5" path="res://assets/audio/platformer.wav" id="5_8ln24"]
+[ext_resource type="AudioStream" uid="uid://dky3gxosemlhl" path="res://assets/audio/idle chambers - silver lining.mp3" id="5_8ln24"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ln24"]
 texture = ExtResource("1_bqqt6")

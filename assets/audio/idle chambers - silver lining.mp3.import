@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dky3gxosemlhl"
+path="res://.godot/imported/idle chambers - silver lining.mp3-1676a5164b511b9c305b0724d38739f5.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/idle chambers - silver lining.mp3"
+dest_files=["res://.godot/imported/idle chambers - silver lining.mp3-1676a5164b511b9c305b0724d38739f5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
