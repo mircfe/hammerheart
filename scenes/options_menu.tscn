@@ -1,0 +1,136 @@
+[gd_scene load_steps=12 format=3 uid="uid://gtin1sjd1x3l"]
+
+[ext_resource type="Script" uid="uid://cj3h0m2aly0la" path="res://scripts/options_menu.gd" id="1_lfjc7"]
+[ext_resource type="FontFile" uid="uid://bdjt27niggb3y" path="res://assets/fonts/hud/Kenney Future.ttf" id="2_3xsyx"]
+[ext_resource type="Texture2D" uid="uid://c8oiro8lke4fj" path="res://assets/background_main_menu.jpg" id="2_dhn0l"]
+[ext_resource type="FontFile" uid="uid://bfxycdiwnfluv" path="res://assets/fonts/hud/Kenney Rocket.ttf" id="3_k61yy"]
+[ext_resource type="FontFile" uid="uid://ba5oacg6bwefp" path="res://assets/fonts/title/PressStart2P-Regular.ttf" id="4_7txom"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhn0l"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ln24"]
+texture = ExtResource("2_dhn0l")
+modulate_color = Color(0.3529412, 0.3647059, 0.36078432, 0.44313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
+bg_color = Color(0.32544088, 0.3254409, 0.32544088, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ln24"]
+bg_color = Color(0.4390491, 0.43904912, 0.43904912, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqqt6"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lfjc7")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.5
+offset_top = -107.0
+offset_right = 224.5
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dhn0l")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.25
+offset_top = -76.0
+offset_right = 136.25
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_3xsyx")
+theme_override_font_sizes/normal_font_size = 25
+text = "← = MOVE LEFT
+→ = MOVE RIGHT
+↑ = JUMP
+SPACE = ATTACK"
+
+[node name="PanelBackground" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_8ln24")
+
+[node name="ButtonReturn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 386.0
+offset_right = 204.0
+offset_bottom = 426.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_k61yy")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wu84c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8ln24")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bqqt6")
+text = "<- Return"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.5
+offset_top = -169.0
+offset_right = 192.5
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.25490198, 0.25882354, 1)
+theme_override_fonts/font = ExtResource("4_7txom")
+theme_override_font_sizes/font_size = 35
+text = "HammerHeart"
+vertical_alignment = 1
+
+[connection signal="pressed" from="ButtonReturn" to="." method="_on_button_return_pressed"]
