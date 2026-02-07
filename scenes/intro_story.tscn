@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5m6n68bt8anh"]
+
+[ext_resource type="Script" uid="uid://bts6cjunk2uxt" path="res://scripts/intro_story.gd" id="1_cyg31"]
+[ext_resource type="FontFile" uid="uid://bdjt27niggb3y" path="res://assets/fonts/hud/Kenney Future.ttf" id="2_bumqu"]
+
+[node name="IntroStory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cyg31")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="StoryText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -273.5
+offset_top = -186.0
+offset_right = 273.5
+offset_bottom = 185.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_bumqu")
+theme_override_fonts/bold_font = ExtResource("2_bumqu")
+theme_override_fonts/italics_font = ExtResource("2_bumqu")
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 18
+theme_override_font_sizes/italics_font_size = 18
+bbcode_enabled = true
+text = "[center]LA TUA STORIA...[/center]\\n\\n[wave]Il martello del cuore...[/wave]"
+scroll_active = false
+scroll_following = true
+
+[node name="SkipButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Skip"
+
+[connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]

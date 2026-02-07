@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="Hammerheart"
+config/version="0.1"
 run/main_scene="uid://y6wnxrbal5u4"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://tb4jgksbypj1"
 
 [autoload]
 
 GameManager="*res://game_manager.gd"
+MusicIntro="*res://scenes/music_intro.tscn"
 
 [display]
 

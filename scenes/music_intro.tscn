@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://k7vd7qug7mge"]
+
+[ext_resource type="AudioStream" uid="uid://dky3gxosemlhl" path="res://assets/audio/idle chambers - silver lining.mp3" id="1_wh628"]
+
+[node name="MusicIntro" type="AudioStreamPlayer"]
+stream = ExtResource("1_wh628")
+autoplay = true
