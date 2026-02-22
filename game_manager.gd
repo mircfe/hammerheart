@@ -3,13 +3,27 @@ extends Node
 signal gems_changed(value: int)
 signal hearts_changed(value : int)
 signal open_chest(value: bool)
+signal environment_changed
 
-
+var current_level = 1
+# This variable contains the max number of gems at the current level
+var total_gems = 0
 var current_gems = 0
 var total_hearts = 3
 var is_chest_open = false
 var key = false
 
+# This function set the value of level's variables as total gems available
+func set_environment_level(level:int) -> void:
+	match level:
+		1:
+			total_gems = 5
+	current_gems = 0
+	environment_changed.emit()
+	
+func next_level() ->void:
+	current_level+=1
+	
 func reset_all() -> void:
 	total_hearts = 3
 	current_gems = 0
@@ -19,7 +33,7 @@ func reset_all() -> void:
 func add_gem() -> void:
 	current_gems+=1
 	gems_changed.emit(current_gems)
-	if current_gems == 5:
+	if current_gems == total_gems:
 		open_chest.emit(true)
 		
 

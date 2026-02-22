@@ -1,8 +1,10 @@
 extends Control
 @onready var story_text: RichTextLabel = $StoryText
 @onready var skip_button: Button = $SkipButton
+# The RichTextLabel used has hidden scrollbars.
 @onready var v_scroll: ScrollBar = story_text.get_v_scroll_bar()
 
+# Duration of the vertical scrolling text animation. This parameter determines the scrolling speed.
 const SCROLL_DURATION: float = 90.0
 
 func _ready() -> void:
@@ -47,14 +49,17 @@ Collect the gems, grab the key and open the chest to enter the dark dwelling.
 	
 
 func scroll_story() -> void:
-	# Aspetta che il testo sia renderizzato
+	# Wait for the text to render so I can determine the maximum height of my text block.
 	await get_tree().process_frame
+	
 	var tween = create_tween()
+	# Tween.TRANS_LINEAR = animation linear without acceleration
+	# Tween.EASE_IN_OUT = fade in-out effect
 	tween.tween_method(
-		_set_scroll,           # Funzione custom
-		0.0,                   # Da
-		v_scroll.max_value,    # A (fine scrollbar)
-		SCROLL_DURATION        # Durata
+		_set_scroll,           # Custom function
+		0.0,                   # From
+		v_scroll.max_value,    # To (end scrollbar)
+		SCROLL_DURATION        # Duration
 	).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	
 	# Fade-in elegante

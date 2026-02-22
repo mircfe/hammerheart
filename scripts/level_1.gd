@@ -5,6 +5,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Set the level's variable
+	GameManager.set_environment_level(1)
 	door_exit.open_door.connect(_on_player_exit)
 
 func _on_player_exit() -> void:
