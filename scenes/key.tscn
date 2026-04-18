@@ -342,7 +342,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ketbl"]
-size = Vector2(6, 18)
+size = Vector2(12, 22)
 
 [node name="Key" type="Area2D"]
 script = ExtResource("1_fttkb")

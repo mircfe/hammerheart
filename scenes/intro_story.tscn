@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5m6n68bt8anh"]
+[gd_scene load_steps=8 format=3 uid="uid://b5m6n68bt8anh"]
 
 [ext_resource type="Script" uid="uid://bts6cjunk2uxt" path="res://scripts/intro_story.gd" id="1_cyg31"]
 [ext_resource type="FontFile" uid="uid://bdjt27niggb3y" path="res://assets/fonts/hud/Kenney Future.ttf" id="2_bumqu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bumqu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r1les"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgnwt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pmj2g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jd5cs"]
 
 [node name="IntroStory" type="Control"]
 layout_mode = 3
@@ -56,6 +66,11 @@ offset_left = -41.0
 offset_top = -31.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bumqu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_r1les")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_cgnwt")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_pmj2g")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jd5cs")
 text = "Skip"
 
 [connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]
