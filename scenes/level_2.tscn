@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://vgakv2k6nlf3"]
+[gd_scene load_steps=17 format=4 uid="uid://vgakv2k6nlf3"]
 
 [ext_resource type="PackedScene" uid="uid://6n7ycdnr01j8" path="res://scenes/live_bar.tscn" id="1_eqxsl"]
 [ext_resource type="PackedScene" uid="uid://c3mtvagdrob5y" path="res://scenes/gems_counter.tscn" id="2_b4j7a"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://btst8u3m7l17u" path="res://scenes/player.tscn" id="8_ne2mo"]
 [ext_resource type="PackedScene" uid="uid://dx037aanmyl7w" path="res://scenes/diamond.tscn" id="9_6cvei"]
 [ext_resource type="PackedScene" uid="uid://cb871h26hyma4" path="res://scenes/cannon.tscn" id="10_que50"]
+[ext_resource type="PackedScene" uid="uid://bjxgoy0vs862v" path="res://scenes/enemy_pig.tscn" id="11_hey2k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b4j7a"]
 texture = ExtResource("5_b4j7a")
@@ -766,3 +767,8 @@ position = Vector2(598, 308)
 
 [node name="Cannon3" parent="Cannons" groups=["Cannons"] instance=ExtResource("10_que50")]
 position = Vector2(493, 278)
+
+[node name="Pigs" type="Node" parent="."]
+
+[node name="EnemyPig" parent="Pigs" instance=ExtResource("11_hey2k")]
+position = Vector2(618, 399)

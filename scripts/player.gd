@@ -111,12 +111,15 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	if is_attacking and body.is_in_group("Cannons"):
 		print("Hit cannon")
 		body.cannon_hit()
-
+	
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if is_attacking and area.is_in_group("Bullets"):
 		print("Hit bullet...")
 		area.bullet_hit()
+	if is_attacking and area.is_in_group("enemy_hurtbox"):
+		print("Hit pig")
+		area.enemy_hit()
 
 func _on_sfx_game_over_finished() -> void:
 	get_tree().paused = true
